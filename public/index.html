@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html >
+  <head>
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <title>Practice</title>
+
+     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+     <link href="/stylesheets/bootstrap-theme.min.css" rel="stylesheet">
+
+     <link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,500,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/javascripts/angular.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="/controllers/controller.js"></script>                                   
+
+  </head>
+  <body ng-app="myapp" ng-controller="AppCtrl">
+
+    <center>
+      <h2 style="color: blue">Registration Form</h2>
+    </center>
+    <div class="table-responsive table table-bordered" style="margin-top: 10px;" >
+
+<br>
+    Contact number : <strong>{{contact.number}}</strong><br>
+   Name: <strong>{{contact.name}}</strong>
+      <table id="posts" class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Number</th>
+            <th>Action</th>
+           
+          </tr>
+        </thead>
+        <tbody id="t_body">
+          <tr>
+            <td><input class="form-control" ng-model="contact.name"></td>
+            <td><input class="form-control" ng-model="contact.email"></td>
+            <td><input class="form-control" ng-model="contact.number"></td>
+            <td><button class="btn btn-primary" ng-click="addContact()">Add Number</button></td>
+            <td><button class="btn btn-primary" ng-click="update()">Update</button></td>
+           
+          
+          </tr>
+          
+          <tr ng-repeat="contact in data">
+            <td >{{contact.name}}</td>
+            <td >{{contact.email}}</td>
+            <td >{{contact.number}}</td>
+            <td><button class="bt btn-danger" ng-click="remove(contact.ID)">Remove</button></td>  
+            <td><button class="bt btn-primary" ng-click="edit(contact)">Edit</button></td>        
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- <script type="text/javascript"  src="/javascripts/custom.js"></script> -->
+    
+  </body>
+</html>
+
+
+
+
+
+
+
+
