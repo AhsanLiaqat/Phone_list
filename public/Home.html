@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html >
+  <head>
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <title>Practice</title>
+
+     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+     <link href="/stylesheets/bootstrap-theme.min.css" rel="stylesheet">
+
+     <link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,500,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    
+
+                                      
+
+  </head>
+  <style type="text/css">
+    .error{
+      color: red;
+    }
+  </style>
+  <body ng-app="myapp" ng-controller="AppCtrl" style="background-color: lightblue">
+
+    <center>
+      <h2 style="color: black;font-weight: bold;">Welcome To Post Page</h2>
+    </center>
+    <div class="container">
+      <div class="row">
+        <a class="btn btn-primary" href="/" style="float: right;margin-top: 40px;margin-bottom: 40px;text-transform: uppercase;font-weight: bold;">Log Out</a>
+      </div>
+    </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <form id="commentForm">
+        
+        <div class="form-group col-md-12">
+          <label style="color: blue;font-weight: bold;font-size: 20px;text-transform: uppercase;">Enter Your Post</label>
+          <textarea type="text" name="name" class="form-control" id="inputAddress" ng-model="contact.post"></textarea>
+        </div>
+        
+        <center>  
+            <button type="submit" class="btn btn-primary" style="text-align: center;font-weight: bold;" ng-click="Post()">Post</button>  
+        </center>
+    </form>
+    </div>
+    <div class="col-md-6">
+      <table id="posts" class="table">
+        <thead>
+          <tr>
+            <th style="color: blue;font-weight: bold;font-size: 20px;text-transform: uppercase;">All Post</th>
+          </tr>
+        </thead>
+        <tbody id="t_body">
+          
+          <tr ng-repeat="contact in data">
+            <td >{{contact.post}}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+ 
+
+    
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/javascripts/angular.js"></script>
+    <script src="/javascripts/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/ngstorage/0.3.10/ngStorage.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="/controllers/controller.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+

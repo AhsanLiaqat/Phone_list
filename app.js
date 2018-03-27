@@ -12,6 +12,7 @@ var users = require('./routes/users');
 var forms = require('./routes/forms');
 
 
+
 var app = express();
 
 
@@ -34,8 +35,21 @@ app.get('/',(req,res)=>
 	res.sendFile('index.html',{
 		root:path.join(__dirname, 'public')
 }));
+app.get('/SignUp',(req,res)=>
+	res.sendFile('SignUp.html',{
+		root:path.join(__dirname, 'public')
+}));
+app.get('/LogIn',(req,res)=>
+	res.sendFile('LogIn.html',{
+		root:path.join(__dirname, 'public')
+}));
+app.get('/Home',(req,res)=>
+	res.sendFile('Home.html',{
+		root:path.join(__dirname, 'public')
+}));
 app.use('/users', users);
 app.use('/forms', forms);
+
 
 
 app.use(function(err, req, res, next) {

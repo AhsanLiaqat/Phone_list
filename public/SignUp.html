@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html >
+  <head>
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <title>Practice</title>
+
+     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+     <link href="/stylesheets/bootstrap-theme.min.css" rel="stylesheet">
+
+     <link rel="stylesheet" type="text/css" href="/stylesheets/fontawesome-all.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,500,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    
+
+                                      
+
+  </head>
+  <body ng-app="myapp" ng-controller="AppCtrl" style="background-color: lightblue">
+
+    <center>
+      <h2 style="color: blue;font-weight: bold;">SignUp Form</h2>
+    </center>
+
+    <form>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" ng-model="contact.email">
+            </div>
+            <div class="col-md-4">
+              
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              
+            </div>
+             <div class="form-group col-md-4">
+                <label>Name</label>
+                <input class="form-control" id="inputPassword4"  placeholder="Name" ng-model="contact.name">
+            </div>
+            <div class="col-md-4">
+              
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              
+            </div>
+           <div class="form-group col-md-4">
+              <label>Password</label>
+              <input type="text" class="form-control" id="inputAddress"  placeholder="Password" ng-model="contact.password">
+            </div>
+            <div class="col-md-4">
+              
+            </div>
+          </div>   
+        </div>
+        <center>  
+            <button type="submit" class="btn btn-primary" style="text-align: center; font-weight: bold;" ng-click="SignUp()">Sign up</button>  
+        </center>
+    </form>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/javascripts/angular.js"></script>
+    <script src="https://cdn.jsdelivr.net/ngstorage/0.3.10/ngStorage.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="/controllers/controller.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+

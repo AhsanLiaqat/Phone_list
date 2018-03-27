@@ -6,15 +6,17 @@ var connection = mysql.createConnection({
     user: 'root',
     password : 'root',
     port : 3306, //port mysql
-    database:'test_ahsan'
+    database:'test2'
 });
 
 connection.connect();
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  connection.query('select * from crud',function(error, results,abc){
+router.get('/Home:id', function(req, res, next) {
+    var id = req.params.id;
+    console.log(id,"+++++++++++++++++++++");  
+  connection.query("select * from posts Where user_id=" +id,function(error, results,abc){
 		console.log("Data from crud table ",results);
-		res.send(results)
+		res.send(results);
 
 	});
 });
@@ -26,7 +28,7 @@ router.post('/forms', function(req, res, next) {
 	console.log(req)
 	var input = JSON.parse(JSON.stringify(req.body));
 	console.log(input)
-	var query = 'insert into crud(name,email,number) values('+'"'+input.name+'","'+input.email+'","'+input.number+'");';
+	var query = 'insert into users(email,name,password) values('+'"'+input.email+'","'+input.name+'","'+input.password+'");';
 	console.log(query);
 	connection.query(query, function (error, results) {
 		console.log('Result ======================>',results,error)
@@ -36,62 +38,71 @@ router.post('/forms', function(req, res, next) {
 		}else{
 			res.send(results);
 		}
+
 	});
 });
 
-router.delete('/forms/:id',function(req,res){
-	var id = req.params.id;
-	console.log(id);
-	connection.query("DELETE FROM crud WHERE id =  "+id, function(err, rows)
-        {
-            
-             if(err)
-                 console.log("Error deleting : %s ",err );
-            
-             res.redirect('/');
-             
-        });
+router.post('/post', function(req, res, next) {
+    console.log(req.body,"+++++++++++++++++++++++++++++++++++++++");
+        console.log(req.body.post.post,"post")
+        console.log(req.body.id)
+        
+        // input.post = JSON.parse(JSON.stringify(console.log(req.body.post.post)));
+        // input.ID = JSON.parse(JSON.stringify(console.log(req.body.id)));
+
+    var query = 'insert into posts(post,user_id) values('+'"'+req.body.post.post+'","'+req.body.id+'");';
+    console.log(query);
+    connection.query(query, function (err, results) {
+        if (err){
+            console.log('The solution is: ', error);
+        }
+        if(results){
+            res.status(203).send('your status uploaded successfully');
+        }
+
+
+        else{
+            res.send(results);
+            console.log(results);    
+        }
+
+    });
 });
 
-router.get('/forms/:id',function(req,res){
-	var id = req.params.id;
-	console.log(id,"this is the id");
-	connection.query("select * FROM crud WHERE id = "+id, function(err, rows)
-        {
-            
-             if(err){
-                 console.log("Error deleting : %s ",err );
-             }
-            console.log(rows,"eifeihfiehfeifheih")
-             res.send(rows);
-             
-        });
-});
-
-router.put('/forms/:id', function(req,res){
-    
+router.post('/login',function(req,res){
     var input = JSON.parse(JSON.stringify(req.body));
-    var id = req.params.id;
+    console.log(input,"this is the id");
+    var query = "Select * from users Where email ='" + input.email + "';";
+    console.log(query);
 
-    console.log('Id-----------',id)
-    console.log('Data-----------',input)
-   
-   
-		var query = 'update crud set name = "'+input.name+'",email = "'+input.email+'", number = "'+input.number+'" where id='+id;
-    	
-    	console.log('-----',query);
-        connection.query(query, function(err, rows)
-         {
-         	console.log(rows);
-  
-          if (err)
-              console.log("Error Updating : %s ",err );
+
+    connection.query(query , function(err, result){
+        console.log('-----------------',typeof(result),result[0].password);
+         if(err){
+             console.log("Error deleting : %s ",err );
+         }
+         if(result && result.length == 1){
+
+            if(result[0].password == input.password){
+                console.log("password match");
+                res.status(200).send(result);
+                console.log(result);
+            }
+            else{
+                console.log("password does not match");
+                res.status(202).send('invalid password');
+            }
+
+         }else if(result.length  > 1){
+                res.send(result);
+         }else{
+            res.send(result);
+         }
+        console.log(result,"eifeihfiehfeifheih")
+
          
-          // res.redirect('/');
-          
-        });
-    
-    
+    });
+    // res.send({});
 });
 
 

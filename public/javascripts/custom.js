@@ -1,15 +1,15 @@
 
 $(function(){
 	var aarr = [];
-	 $.ajax({
-			type: 'get',
-	        contentType: 'application/json',
-	        url: '/forms/',						
-	        success: function(response) {
-	            aarr = aarr.concat(response);
-	            pushArray();
-	        }
-	    });
+	 // $.ajax({
+		// 	type: 'get',
+	 //        contentType: 'application/json',
+	 //        url: '/forms/',						
+	 //        success: function(response) {
+	 //            aarr = aarr.concat(response);
+	 //            pushArray();
+	 //        }
+	 //    });
 	
     $("#Save").click(function(){
 	   
@@ -47,6 +47,27 @@ $(function(){
 	    }
 
 });
+
+
+$(document).ready(function(){
+	$("#commentForm").validate({
+  	rules: {
+    name: {
+    	required:true,
+    },
+   
+  },
+  	messages: {
+    name: {
+      required: "This Field is Required",	
+    },
+ 
+  }
+});
+
+});
+
+
 
 
 
